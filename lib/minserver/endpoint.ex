@@ -7,6 +7,8 @@ defmodule Minserver.Endpoint do
 
   plug(:dispatch)
 
+  forward("/bot", to: Minserver.Router)
+
   match _ do
     send_resp(conn, 404, "Not found")
   end
