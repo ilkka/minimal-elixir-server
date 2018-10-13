@@ -12,4 +12,15 @@ defmodule Minserver.Endpoint do
   match _ do
     send_resp(conn, 404, "Not found")
   end
+
+  def child_spec(opts) do
+    %{
+      id: __MODULE__,
+      start: {__MODULE__, :start_link, [opts]}
+    }
+  end
+
+  def start_link(_opts) do
+    Plug.Adapters.Cowboy2.http(__MODULE__, [])
+  end
 end
