@@ -1,2 +1,6 @@
 use Mix.Config
-config :minserver, Minserver.Endpoint, port: "PORT" |> System.get_env() |> String.to_integer()
+
+case "PORT" |> System.get_env() do
+  nil -> nil
+  port -> config :minserver, Minserver.Endpoint, port: String.to_integer(port)
+end
