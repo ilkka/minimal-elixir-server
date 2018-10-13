@@ -8,8 +8,7 @@ defmodule Minserver.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Starts a worker by calling: Minserver.Worker.start_link(arg)
-      # {Minserver.Worker, arg},
+      Minserver.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
